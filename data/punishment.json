@@ -1,6 +1,6 @@
 {
   "saisons": {
-    "Saison 1": {
+    "1": {
       "Bart le génie": "Je ne gâcherai pas de craie",
       "Un atome de bon sens": "Je ne ferai pas de skate-board dans les couloirs",
       "Simpsonothérapie": "Je ne roterai pas en classe",
@@ -12,7 +12,7 @@
       "Un clown à l'ombre": "Ils rient de moi, pas avec moi",
       "Une soirée d'enfer": "Je ne crierai pas au feu en pleine classe"
     },
-    "Saison 2": {
+    "2": {
       "Aide-toi, le ciel t'aidera": "Je n'encouragerai pas les autres à voler",
       "Simpson et Dalila": "On ne joue pas avec le goudron",
       "Sous le signe du poisson": "Je ne photocopierai pas mes fesses",
@@ -33,7 +33,7 @@
       "Un pour tous, tous contre un": "Je ne chercherai pas à frimer",
       "Le sang, c'est de l'argent": "Je ne passerai pas ma scolarité à dormir"
     },
-    "Saison 3": {
+    "3": {
       "Mon pote Michael Jackson": "Je ne suis pas dentiste",
       "Lisa va à Washington": "Liberté de parole ne veut pas dire cracher",
       "Le palais du gaucher": "Personne n'aime les claques sur les coups de soleil",
