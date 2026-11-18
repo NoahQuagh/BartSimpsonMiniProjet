@@ -23,15 +23,12 @@ function getPunishmentsList(string $path = PUNISHMENT_FILE): array
  * @param int $season Numéro de saison
  * @return array Liste des punitions pour cette saison
  */
-function getPunishmentsBySeason(int $season = 1,string $path = PUNISHMENT_FILE)
+function getPunishmentsBySeason(int $season = 1,string $path = PUNISHMENT_FILE): array
 {
-    $filteredList = getPunishmentsList($path);
-
-    if (empty($filteredList)) {
-        return null;
-    }
-
-    return $filteredList[$season];
+    $seasonsList = getPunishmentsList($path);
+    return isset($seasonsList[$season]) && is_array($seasonsList[$season])
+        ? $seasonsList[$season]
+        : [];
 }
 
 /**
@@ -68,4 +65,16 @@ function getRandomPunishmentFromSeason(int $season=1,string $path = PUNISHMENT_F
 
     $randomKey = array_rand($punishmentList);
     return ['season'=>$season,'title'=>$randomKey,'punishment'=>$punishmentList[$randomKey]];
+}
+
+/**
+ * Récupère la liste des saisons disponibles dans le json des punitions
+ *
+ * @param string $path Chemin du JSON
+ * @return int[]|string[] liste des numéros de saison
+ */
+function getSeasonsList(string $path = PUNISHMENT_FILE)
+{
+    $punishmentList = getPunishmentsList($path);
+    return array_keys($punishmentList);
 }

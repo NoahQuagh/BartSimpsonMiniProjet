@@ -1,5 +1,5 @@
 <?php
 
-use utils\SessionManager;
+require_once __DIR__.'/../core/SessionManager.php';
 
-SessionManager::getInstance()->destroy();
+\core\SessionManager::getInstance()->destroy();

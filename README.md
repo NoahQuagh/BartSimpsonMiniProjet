@@ -26,3 +26,12 @@ bart-simpson/
 ├── .gitignore
 ├── index.php                   # Contrôleur frontal : traite le POST, lit cookies/session et affiche la page
 └── README.md```
+
+
+
+
+L'utilisateur doit pouvoir définir le nombre de lignes (fixez un minimum et un maximum) utilisé pour une punition (adaptez la modale).
+Il devra aussi pouvoir choisir une vitesse d'affichage des lignes.
+Ces informations devront être stockées dans un cookie et interprété au chargement de la page.
+
+Vous devrez également proposer une nouvelle fonctionnalité de votre choix.
