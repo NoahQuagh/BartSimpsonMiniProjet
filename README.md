@@ -14,13 +14,13 @@ bart-simpson/
 │       ├── modal.js            # Ouverture/fermeture accessible (WCAG) de la modale
 │       └── sessionAjax.js      # Requête fetch() vers api/clear_session.php
 ├── core/
-│   ├── autoload.php            # Chargement automatique des classes (core/ et services/)
 │   ├── CookieManager.php       # Classe utilitaire/Singleton pour gérer les cookies (V2)
 │   └── SessionManager.php      # Ton Singleton issu de php-core-starter
 ├── data/
 │   └── punitions.json          # Le fichier JSON source des punitions
 ├── services/
-│   └── PunitionService.php     # Lecture du JSON, filtrage par saison, tirage aléatoire
+│   └── JsonService.php         # Lecture du JSON
+│   └── PunitionService.php     # filtrage par saison, tirage aléatoire
 ├── views/
 │   └── modal.php               # Fragment HTML du formulaire POST de la modale
 ├── .gitignore

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../services/JsonService.php';
+define('PUNISHMENT_FILE',__DIR__.'/../data/punishment.json');
 
 /**
  * Lit et retourne le tableau associatif brut des saisons et punitions
@@ -8,7 +9,7 @@ require_once __DIR__ . '/../services/JsonService.php';
  * @param string $path Chemin du JSON
  * @return array Tableau associatif
  */
-function getPunishmentsList(string $path): array
+function getPunishmentsList(string $path = PUNISHMENT_FILE): array
 {
     $data = getJsonFile($path);
     return isset($data['saisons']) && is_array($data['saisons']) ? $data['saisons'] : [];
@@ -22,7 +23,7 @@ function getPunishmentsList(string $path): array
  * @param int $season Numéro de saison
  * @return array Liste des punitions pour cette saison
  */
-function getPunishmentsBySeason(string $path, int $season = 1)
+function getPunishmentsBySeason(int $season = 1,string $path = PUNISHMENT_FILE)
 {
     $filteredList = getPunishmentsList($path);
 
@@ -39,16 +40,19 @@ function getPunishmentsBySeason(string $path, int $season = 1)
  * @param string $path Chemin du JSON
  * @return array|null Liste des punitions de toutes les saisons
  */
-function getRandomPunishmentsSeason(string $path)
+function getRandomPunishmentByRandomSeason(string $path = PUNISHMENT_FILE)
 {
-    $filteredList = getPunishmentsList($path);
+    $PunishmentsList = getPunishmentsList($path);
 
-    if (empty($filteredList)) {
+    if (empty($PunishmentsList)) {
         return null;
     }
 
-    $randomKey = array_rand($filteredList);
-    return $filteredList[$randomKey];
+    $randomSeasonKey = array_rand($PunishmentsList);
+    $punishmentList = getPunishmentsBySeason($randomSeasonKey,$path);
+
+    $randomKey = array_rand($punishmentList);
+    return ['season'=>$randomSeasonKey,'title'=>$randomKey,'punishment'=>$punishmentList[$randomKey]];
 }
 
 /**
@@ -56,12 +60,12 @@ function getRandomPunishmentsSeason(string $path)
  *
  * @param string $path Chemin du JSON
  * @param int $season Numéro de saison
- * @return String punition aléatoire pour cette saison
+ * @return array punition aléatoire et le titre de l'épisode pour cette saison
  */
-function getRandomPunishmentFromSeason(string $path,int $season): string
+function getRandomPunishmentFromSeason(int $season=1,string $path = PUNISHMENT_FILE): array
 {
-    $punishmentList = getPunishmentsBySeason($path,$season);
+    $punishmentList = getPunishmentsBySeason($season,$path);
 
     $randomKey = array_rand($punishmentList);
-    return $punishmentList[$randomKey];
+    return ['season'=>$season,'title'=>$randomKey,'punishment'=>$punishmentList[$randomKey]];
 }

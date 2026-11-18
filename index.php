@@ -6,9 +6,7 @@ require_once __DIR__ . '/services/PunitionService.php';
 require_once __DIR__ . '/core/SessionManager.php';
 
 
-$bys  = getRandomPunishmentFromSeason('data/punishment.json',3);
-
-
-echo '<pre>';
-print_r($bys);
-echo '</pre>';
+include __DIR__ . '/views/header.php';
+include __DIR__ . '/views/board.php';
+include __DIR__ . '/views/settings.php';//todo
+include __DIR__ . '/views/footer.php';
