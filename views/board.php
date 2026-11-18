@@ -4,12 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style/reset.css">
   <link rel="stylesheet" href="../assets/style/style.css">
   <link rel="stylesheet" href="assets/style/modal.css">
+  <link rel="stylesheet" href="assets/style/board.css">
   <link rel="icon" href="" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <script src="https://kit.fontawesome.com/0acb75a9e8.js" crossorigin="anonymous"></script>
   <title>Les punitions de Bart</title>
@@ -20,20 +25,24 @@
   <h1>La punition de la semaine</h1>
 
   <section id="display">
-      <div id="board">
-          <article id="content"></article>
-          <img src="../assets/img/BS.png" alt="Bart Simpson">
-      </div>
+    <div id="board">
+      <article id="content"></article>
+      <img src="assets/img/BS.png" alt="Bart Simpson" class="bart-img">
+    </div>
   </section>
 
   <section id="parameters">
-    <h2>Choisis la saison</h2>
-    <button id="settingBtn"><i class="ti ti-settings-2"></i></button>
-    <h2>Punis moi !</h2>
-    <button id="playBtn"><i class="ti ti-player-play"></i></button>
-    <?php use utils\CookieManager;
-
-    require "views/modal.php"; ?>
+    <div class="param-controls">
+      <div class="param-group">
+        <h2>Choisis la saison</h2>
+        <button id="settingBtn" aria-label="Paramètres"><i class="ti ti-settings-2"></i></button>
+      </div>
+      <div class="param-group">
+        <h2>Punis moi !</h2>
+        <button id="playBtn" aria-label="Rejouer la punition"><i class="ti ti-player-play"></i></button>
+      </div>
+    </div>
+    <?php require "views/modal.php"; ?>
   </section>
 </main>
 
