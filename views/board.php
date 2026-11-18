@@ -31,7 +31,9 @@
     <button id="settingBtn"><i class="ti ti-settings-2"></i></button>
     <h2>Punis moi !</h2>
     <button id="playBtn"><i class="ti ti-player-play"></i></button>
-    <?php require "views/modal.php"; ?>
+    <?php use utils\CookieManager;
+
+    require "views/modal.php"; ?>
   </section>
 </main>
 
@@ -79,11 +81,14 @@
       $punishment = $rawRandomPunishment['punishment'];
     }
 
-    for ($i = 0; $i < 8; $i++) {
-      echo 'setTimeout(function() { writeLine("' . $punishment . '"); }, ' . ($i * 1000) . ');';
+    $line=\core\CookieManager::getInstance()->get('line');
+    $speed=\core\CookieManager::getInstance()->get('speed');
+
+    for ($i = 0; $i < $line; $i++) {
+      echo 'setTimeout(function() { writeLine("' . $punishment . '"); }, ' . ($i*$speed) . ');';
     }
     ?>
-    setTimeout(function() { writeTitle("<?php echo 'Saison '.$season . ' - ' . $episode; ?>"); }, 8 * 1000);
+    setTimeout(function() { writeTitle("<?php echo 'Saison '.$season . ' - ' . $episode; ?>"); },<?= $i*$speed ?>);
 
 </script>
 </body>

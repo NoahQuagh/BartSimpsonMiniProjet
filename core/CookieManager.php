@@ -1,5 +1,6 @@
 <?php
 
+namespace core;
 /**
  * Classe Singleton de gestion sécurisée des cookies PHP
  *
@@ -41,22 +42,22 @@ class CookieManager
     /**
      * Crée ou met à jour un cookie (supporte chaînes, nombres et tableaux via JSON)
      *
-     * @param string $name     Nom du cookie
-     * @param mixed  $value    Valeur (si tableau/objet, encodé automatiquement en JSON)
-     * @param int    $days     Durée de vie en jours (30 jours par défaut)
-     * @param bool   $httpOnly True = inaccessible en JS (sécurité), False = lisible en JS
+     * @param string $name Nom du cookie
+     * @param mixed $value Valeur (si tableau/objet, encodé automatiquement en JSON)
+     * @param int $days Durée de vie en jours (30 jours par défaut)
+     * @param bool $httpOnly True = inaccessible en JS (sécurité), False = lisible en JS
      */
     public function set(string $name, mixed $value, int $days = 30, bool $httpOnly = true)
     {
         $encodedValue = is_array($value) || is_object($value)
             ? json_encode($value, JSON_UNESCAPED_UNICODE)
-            : (string) $value;
+            : (string)$value;
 
         $expires = time() + ($days * 86400);
 
         setcookie($name, $encodedValue, [
-            'expires'  => $expires,
-            'path'     => '/',
+            'expires' => $expires,
+            'path' => '/',
             'httponly' => $httpOnly,
             'samesite' => 'Lax'
         ]);
@@ -95,8 +96,8 @@ class CookieManager
     public function remove(string $name)
     {
         setcookie($name, '', [
-            'expires'  => time() - 3600,
-            'path'     => '/',
+            'expires' => time() - 3600,
+            'path' => '/',
             'httponly' => true,
             'samesite' => 'Lax'
         ]);
