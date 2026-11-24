@@ -34,19 +34,24 @@
   <section id="parameters">
     <div class="param-controls">
       <div class="param-group">
-        <h2>Choisis la saison</h2>
+        <h2>Choisir la saison</h2>
         <button id="settingBtn" aria-label="Paramètres"><i class="ti ti-settings-2"></i></button>
       </div>
       <div class="param-group">
         <h2>Punis moi !</h2>
         <button id="playBtn" aria-label="Rejouer la punition"><i class="ti ti-player-play"></i></button>
       </div>
+    <div class="param-group">
+        <h2>Nouvelle punition</h2>
+        <button id="addBtn" aria-label="Nouvelle punition"><i class="ti ti-plus"></i></button>
+    </div>
     </div>
     <?php require "views/modal.php"; ?>
+      <?php require "views/ModalAdd.php"; ?>
   </section>
 </main>
 
-<footer> Exercice PHP</footer>
+<footer> Exercice PHP de R3 01: Développement Web</footer>
 
 <script type="module"  src="assets/js/main.js"></script>
 <script>
@@ -96,8 +101,13 @@
     for ($i = 0; $i < $line; $i++) {
       echo 'setTimeout(function() { writeLine("' . $punishment . '"); }, ' . ($i*$speed) . ');';
     }
+    if ($season==0){
+        $season='Mes punitions';
+    }else{
+        $season='Saison '.$season;
+    }
     ?>
-    setTimeout(function() { writeTitle("<?php echo 'Saison '.$season . ' - ' . $episode; ?>"); },<?= $i*$speed ?>);
+    setTimeout(function() { writeTitle("<?php echo $season . ' - ' . $episode; ?>"); },<?= $i*$speed ?>);
 
 </script>
 </body>

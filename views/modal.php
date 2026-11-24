@@ -24,9 +24,9 @@ $hasSavedSeason = ($savedSeason !== null && $savedSeason !== '');
         <select name="season" id="season-select">
           <option value="random">Aléatoire</option>
           <?php foreach (getSeasonsList() as $saisonNb): ?>
-            <option value="<?= htmlspecialchars((string) $saisonNb) ?>" <?= ((string) $saisonNb === (string) $savedSeason) ? 'selected' : '' ?>>
-              Saison <?= htmlspecialchars((string) $saisonNb) ?>
-            </option>
+              <option value="<?= htmlspecialchars((string) $saisonNb) ?>" <?= ((string) $saisonNb === (string) $savedSeason) ? 'selected' : '' ?>>
+                  <?= ((int) $saisonNb === 0) ? 'Mes punitions' : 'Saison ' . htmlspecialchars((string) $saisonNb) ?>
+              </option>
           <?php endforeach; ?>
         </select>
 
@@ -63,7 +63,7 @@ $hasSavedSeason = ($savedSeason !== null && $savedSeason !== '');
 
     <div class="modal-footer">
       <button type="button" class="modal-btn btn-cancel js-close-modal">Fermer</button>
-      <button type="submit" form="settings-form" class="modal-btn btn-confirm risk">Valider</button>
+      <button type="submit" form="settings-form" class="modal-btn btn-confirm">Valider</button>
     </div>
 
   </div>

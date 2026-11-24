@@ -2,9 +2,12 @@ import { openModal, closeModal } from './modal.js';
 import {formChange, formSubmit} from "./settingsForm.js";
 
 const playBtn = document.getElementById('playBtn');
+const addBtn = document.getElementById('addBtn');
 const settingBtn = document.getElementById('settingBtn');
 const closeBtns = document.querySelectorAll('.js-close-modal');
 const overlay = document.getElementById('settingModal');
+const closeAddModal = document.getElementById('closeAddModalBtn');
+const closeAddModalBtn = document.getElementById('closeAddMd');
 
 playBtn.addEventListener('click', () => {
     window.location.reload();
@@ -19,6 +22,24 @@ closeBtns.forEach(btn => {
         closeModal('settingModal');
     });
 });
+
+if (addBtn) {
+    addBtn.addEventListener('click', () => {
+        openModal('addPunishModal');
+    });
+}
+
+if (closeAddModal) {
+    closeAddModal.addEventListener('click', () => {
+        closeModal('addPunishModal');
+    });
+}
+
+if(closeAddModalBtn){
+    closeAddModalBtn.addEventListener('click',()=>{
+        closeModal('addPunishModal');
+    });
+}
 
 window.addEventListener('click', (event) => {
     if (event.target === overlay) {
@@ -53,3 +74,29 @@ if (settingsForm) {
     });
 }
 
+const addForm = document.getElementById('add-form');
+
+if (addForm) {
+    addForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(addForm);
+
+        try {
+            const response = await fetch('api/add_punishment.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                window.location.reload();
+            } else {
+                alert(result.message || 'Erreur lors de l\'ajout.');
+            }
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout de la punition :', error);
+        }
+    });
+}

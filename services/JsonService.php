@@ -12,3 +12,9 @@ function getJsonFile(string $path)
     $data = json_decode($jsonString, true);
     return $data;
 }
+
+function saveJsonFile(string $path, array $content): bool
+{
+    $json = json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    return $json !== false && file_put_contents($path, $json) !== false;
+}

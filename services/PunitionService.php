@@ -78,3 +78,14 @@ function getSeasonsList(string $path = PUNISHMENT_FILE)
     $punishmentList = getPunishmentsList($path);
     return array_keys($punishmentList);
 }
+
+function addCustomPunishment(string $title, string $punishment, int $season = 0, string $path = PUNISHMENT_FILE): bool
+{
+    $data = getJsonFile($path);
+    if (!isset($data['saisons']) || !is_array($data['saisons'])) {
+        $data['saisons'] = [];
+    }
+
+    $data['saisons'][$season][$title] = $punishment;
+    return saveJsonFile($path, $data);
+}

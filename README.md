@@ -30,3 +30,6 @@ bart-simpson/
 
 
 Vous devrez également proposer une nouvelle fonctionnalité de votre choix.
+
+faq-etu.unicaen.fr
+dev-nom-users.info.unicaen.fr
